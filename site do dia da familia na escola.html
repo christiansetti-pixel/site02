@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style>
+		*{box-sizing: border-box;}
+		body{
+			margin: 0;
+			font-family: Arial, sons - serif;
+			background-image: url('https://i.ytimg.com/vi/yKcL2GnWvyA/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAqmSnfL_QD0F0WQNr43haEVbfC6Q.jbg');
+		    background-size: cover; /* Faz a imagem cobrir a tela toda */
+		    background-position: center; /* Centraliza a imagem */
+		    background-attachment: fixed;
+		}
+			
+		.cabecalho{
+			height: 250px;
+			
+		}
+
+		/***layout padrão para desktop***/
+		.container{
+			display: flex;
+			width:980px;
+			margin: 0 auto;
+			padding: 16px;
+		}
+		.esquerda, .direita{
+			width: 500px;
+			padding: 65px;
+		
+		}
+		.principal{
+			width: 450px;
+			padding: 12PX;
+			flex: 1;
+			min-width: 0;
+		}
+
+		/***layout para tablets***/
+
+		@media(max-width: 900px){
+			.container{
+				flex-wrap: wrap;
+			}
+			.esquerda{
+				width: 500px;
+				flex: flex;
+			}
+			.principal{
+				flex: 1 1 0;
+				width: auto;
+				min-width: 280px;
+			}
+			.direita{
+				width: 100%;
+				flex: 0 0  100%;
+			}
+		}
+
+		/***layout para dispositivo móveis (celular)***/
+		@media(max-width: 600px){
+			.container{
+				flex-direction: column;
+			}
+			.esquerda,.principal, .direita{
+				background-color: rgba(0, 0, 0, 0.7); 
+			    border-radius: 10px;
+			    color: white;
+			}
+		}
+		.rodape {
+		    color: white;
+		    text-shadow: 2px 2px 4px rgba(0,0,0,0.8); 
+		    text-align: center;
+		}
+		.rodape h2, .rodape p {
+		    background-color: transparent !important;
+		    margin: 10px 0;
+		}
+		
+		.direita{
+			width: 150px;
+		}
+		h2, p {
+		  margin: 20px;
+		}
+
+		
+
+		ul {
+		  list-style-type: none;
+		  margin: 0;
+		  padding: 0;
+		  display: flex;
+		  justify-content: center;
+
+		}
+
+		ul li a {
+		  display: block;
+		  padding: 14px 16px;
+		  text-decoration: none;
+
+		}
+
+		ul li a:hover {
+		background-color: gray;
+		}
+		.testbtn {
+		  background-color: #04AA6D;
+		  color: black;
+		  font-size: 17px;
+		  padding: 17px;
+		  border: none;
+		  border-radius: 17px;
+		  cursor: pointer;
+		}
+
+		.testbtn:hover {
+            background-color: #218838;
+           	transform: scale(1.05);
+           	{
+		.testbtn {
+		    background: linear-gradient(45deg, #04AA6D, #02fa92); 
+		    color: white;
+		    font-weight: bold;
+		    text-transform: uppercase;
+		    letter-spacing: 1px;
+		    box-shadow: 0 4px 15px rgba(4, 170, 109, 0.4);
+		    transition: 0.3s all ease;
+		}
+
+		.testbtn:hover {
+		    transform: translateY(-3px); 
+		    box-shadow: 0 6px 20px rgba(4, 170, 109, 0.6);
+		    background-color: #05cf85;
+		}
+	
+
+		.modal-conteudo {
+		    background: #111;
+		    border: 2px solid #04AA6D;
+		    padding: 30px;
+		    border-radius: 15px;
+		    text-align: center;
+		    color: gray;
+		}
+
+		.modal-conteudo button {
+		    background: #04AA6D;
+		    color: gray;
+		    border: none;
+		    padding: 10px 20px;
+		    cursor: pointer;
+		    font-weight: bold;
+		    border-radius: 5px;
+		}
+		.overlay {
+		    position: fixed;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    height: 100%;
+		    background-color: #000; /* Fundo totalmente preto */
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    z-index: 10000; /* Fica na frente de TUDO */
+		    transition: opacity 0.5s ease;
+		}
+
+		.conteudo-central {
+		    text-align: center;
+		    color: transition;
+		    font-family: 'Courier New', Courier, monospace;
+		}
+
+		.logo-gamer {
+		    font-size: 50px;
+		    text-shadow: 0 0 15px #04AA6D;
+		    margin-bottom: 20px;
+		}
+		.barra-carregamento {
+		    width: 300px;
+		    height: 10px;
+		    background: #222;
+		    border-radius: 5px;
+		    margin: 20px auto;
+		    overflow: hidden;
+		}
+
+		.progresso {
+		    width: 0%;
+		    height: 100%;
+		    background: #04AA6D;
+		    box-shadow: 0 0 10px #04AA6D;
+		    animation: carregar 2s forwards; /* Animação de 2 segundos */
+		}
+
+
+		.botao-entrar {
+		    background: transparent;
+		    border: 30px solid #04AA6D;
+		    color: gray;
+		    padding: 30px 45px;
+		    font-size: 30px;
+		    cursor: pointer;
+		    border-radius: 15px;
+		    font-weight: bold;
+		    transition: 3.5s;
+
+		}
+
+		.botao-entrar:hover {
+		    background-color: gray;
+		    
+		}
+
+		body { font-family: sans-serif; display: flex; justify-content: center; padding: 50px; }
+        .checkout-card { border: 1px solid #ccc; padding: 20px; border-radius: 8px; width: 300px; shadow: 2px 2px 10px rgba(0,0,0,0.1); }
+        input { width: 93%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px; }
+        button { width: 100%; padding: 12px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #218838; }
+	</style>
+</head>
+<body>
+<div class="cabecalho">
+	<ul>
+	  <li><a href="#home">Informações</a></li>
+	  <li><a href="#news">Pequisa</a></li>
+	  <li><a href="#contact">Linha gamer</a></li>
+	  <li><a href="#about">Cabos de internet</a></li>
+	  <li><a href="#about">Suporte da rede</a></li>
+	</ul>
+	
+
+	
+
+	<div class="container">
+		<div class="esquerda">
+			<img width="300px" src="C:\Users\Aluno\Documents\christian setti\imagem\novopc.webp">
+			<h1>Aqui estão alguns links de videos:</h1>
+			<p><a href="https://www.youtube.com/watch?v=rRdGwiE7zYY">Pc gamer  basico para rodar tudo.</a> </p>
+			<p><a href="https://www.youtube.com/watch?v=FtveMxurdnU">Video de como montar seu pc em casa.</a></p>
+			<p><a href="https://www.youtube.com/watch?v=_UPtSiCW6Qs">Cuidados que voce tem que ter com seu pc.</a></p>
+			<h1> Aqui voce vai encontrar links de compra de pc em lojas confiaveis.</h1>
+			<p><a href="https://www.pichau.com.br/computador-pichau-gamer-apolo-amd-ryzen-5-5600gt-8gb-ddr4-ssd-240gb-45198?gad_source=1&gad_campaignid=17414807508&gbraid=0AAAAADvAK90f0BOllql4Nj4lsC5DIUbiH&gclid=EAIaIQobChMIqZfEiqK-kwMVI0JIAB12wQ3bEAQYAyABEgKdG_D_BwE">Pc gamer mais barato do mercado.</a></p>
+			<p><a href="https://www.mercadolivre.com.br/pc-gamer-redseek-intel-core-i7-32gb-ddr4-ssd-480gb-nvidia-4gb/p/MLB54221097?pdp_filters=item_id%3AMLB4183795347&from=gshop&matt_tool=31485049&matt_internal_campaign_id=&matt_word=&matt_source=google&matt_campaign_id=22090354244&matt_ad_group_id=175053650284&matt_match_type=&matt_network=g&matt_device=c&matt_creative=728942947329&matt_keyword=&matt_ad_position=&matt_ad_type=pla&matt_merchant_id=735128188&matt_product_id=MLB54221097-product&matt_product_partition_id=2389840739979&matt_target_id=pla-2389840739979&cq_src=google_ads&cq_cmp=22090354244&cq_net=g&cq_plt=gp&cq_med=pla&gad_source=1&gad_campaignid=22090354244&gbraid=0AAAAAD93qcDpQ1TIKfzCaLF_t7Cd_ARe1&gclid=EAIaIQobChMItpaByaK-kwMVtGBIAB1KNiu3EAQYCiABEgI9-PD_BwE">Pc gamer de até R$3.500,00</a></p>
+			<p><a href="https://www.pichau.com.br/pc-gamer-pichau-highflyer-intel-i9-14900ks-geforce-rtx-5090-32gb-32gb-ddr5-ssd-m-2-2tb-57472?srsltid=AfmBOoon0BM0HjOjzYidJ5cUNkrL93UcS3RMbIbxZYd2_mqDnnTjp5E6aFQ">Pc gamer mais caro.</a></p>
+		
+		</div>
+		<div class=" pricipal">
+			<strong><h1>Dicas para o dia a dia</h1></strong>
+			
+			<p> <img  width="250px"src="https://imgs.casasbahia.com.br/1576757322/1xg.jpg?imwidth=500"> <br>
+			<h1>Aqui você encontrara dicas de informatica e muito mais,e vendemos pc gamer do mais basico ao mais avansado.<br>Esse kit de pc está na promoção!R$:2.852,99</h1></p>
+			<img width="300px" src="C:\Users\Aluno\Documents\christian setti\imagem\mesa gamer.webp">
+			<a href="pagamento.html" style="text-decoration: none;">
+			 <br><button width="200px" class="testbtn">comprar</button>
+			</a>
+			 <div><h2> Está é a melhor loja que você pode encontrar no sul do brasil, porque a qualidade é quarandida alem do proficionais que exercem um trabalho de qualidade para que o produto chegue em otimo estado na sua casa, a caso estiver proplema com o pacote é so entrar em contado que esta logo a baixo.</h2></div>
+			 <P>
+			 	<video width="320" height="240" controls>
+			<source src="C:\Users\Aluno\Documents\christian setti\imagem\videoplayback.mp4" type="video\mp4">
+			</video>
+			 </P>  
+		</div>	
+		<div class=" direita">
+			<img  width="310px"src="C:\Users\Aluno\Documents\christian setti\imagem\setap.webp">
+			<form action="/action_page.php">
+			  <label for="dicas"><h3>Escolha uma dica do dia a dia:</h3></label>
+			  <select name="dicas" id="dicas">
+			  	<option value="escolha">--escolha--</option>
+			    <option value="pc lento">pc lento?</option>
+			    <option value="poeira">poeira acumulada melhora o desempenho do pc?</option>
+			    <option value="posso jogar agua">posso jogar agua no pc?</option>
+			    <option value="audi">como eu troco a pasta termica do pc/</option>
+			  </select>
+			  <br><br>
+			  <button class="ENVIAR">enviar</button>
+			</form> 
+		</div>
+	</div>
+		<div id="tela-cheia" class="overlay">
+		    <div class="conteudo-central">
+		        <h1 class="logo-gamer">estamos sempre atualizandos </h1>
+		        <div class="barra-carregamento">
+		            <div class="progresso"></div>
+		        </div>
+		      
+	    </div>
+	</div>
+		<div class="campo">
+			<label for="coloque a tua duvida aqui"><h2>coloque a tua duvida aqui em baixo:</h2></label>
+			<textarea cols="35" rows="20"></textarea>
+		</div>
+		
+
+	<div class="rodape">
+	 <h2>contado do suporte - (49)9960-789 | rua afunso ao lado da casa mortuaria joão batista n°12  | redes sociais:dicas premiuns de pc online</h2>
+</body>
+</html>
